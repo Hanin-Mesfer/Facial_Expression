@@ -222,25 +222,7 @@ K-Means was evaluated as an initial baseline. However, the emotional feature spa
 
 Human emotional states are inherently continuous and overlapping — a participant transitioning between calm and stressed does not flip a binary switch. GMM reflects this reality by assigning each sample a **probability of belonging to each cluster**, producing richer, more realistic stress-state representations.
 
-### GMM: Technical Foundation
 
-A Gaussian Mixture Model represents the data as a weighted sum of *K* multivariate Gaussian components:
-
-```
-p(x) = Σ_{k=1}^{K}  π_k · N(x | μ_k, Σ_k)
-```
-
-Where `π_k` is the mixing weight, `μ_k` is the component mean, and `Σ_k` is the full covariance matrix capturing feature correlations within each cluster.
-
-**Parameter Estimation — Expectation-Maximization (EM):**
-
-1. **E-step:** Compute the posterior responsibility of each component for each data point
-2. **M-step:** Update all `π_k`, `μ_k`, `Σ_k` to maximize the expected log-likelihood
-3. **Iterate** until convergence
-
-**Optimal Component Selection — BIC:**
-
-The number of clusters *K* was selected by minimizing the Bayesian Information Criterion, which penalizes model complexity relative to fit quality — preventing overfitting to spurious structure.
 
 ### Clustering Output
 

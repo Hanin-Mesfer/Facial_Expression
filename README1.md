@@ -182,20 +182,9 @@ A full Pearson correlation matrix was computed over all numeric features. Key fi
 
 PCA was applied to project the 13-dimensional feature space into 2D for cluster visualization. The first two principal components explain **59.3% of total variance** (PC1: 43.9%, PC2: 15.4%), confirming that the engineered features carry strong, concentrated signal suitable for clustering and classification.
 
-### Libraries Used
-
-| Library | Role |
-|---------|------|
-| `pandas` | Data loading, manipulation, groupby summaries |
-| `numpy` | Numerical computation and array operations |
-| `matplotlib` | Static charts and subplot layouts |
-| `seaborn` | Correlation heatmaps and distribution plots |
-| `plotly` | Interactive visualizations |
-| `sklearn.decomposition.PCA` | Dimensionality reduction for cluster visualization |
-
 ---
 
-## 🔵 Clustering Phase — Gaussian Mixture Model
+## 🔵 Clustering — Gaussian Mixture Model
 
 ### Why Clustering?
 

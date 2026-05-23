@@ -26,8 +26,6 @@
 - [Supervised Learning](#-supervised-learning)
 - [Model Evaluation](#-model-evaluation)
 - [Technologies Used](#-technologies-used)
-- [Project Structure](#-project-structure)
-- [Future Work](#-future-work)
 
 ---
 
@@ -384,72 +382,6 @@ The consistency between MI scores and learned feature importances is a strong in
 
 ---
 
-## 📁 Project Structure
 
-```
-facial-stress-detection/
-│
-├── 📂 data/
-│   ├── TrainData.csv                      # Training set (1,263 samples)
-│   └── TestData.csv                       # Test set (1,706 samples)
-│
-├── 📂 notebooks/
-│   └── facial_expression_pipeline.ipynb   # Full ML pipeline
-│
-├── 📂 outputs/
-│   ├── figures/                           # EDA and evaluation plots
-│   └── models/                            # Serialized GMM and GB models
-│
-├── 📂 src/
-│   ├── feature_engineering.py             # Feature engineering utilities
-│   ├── clustering.py                      # GMM training and BIC selection
-│   └── supervised.py                      # Gradient Boosting pipeline
-│
-├── requirements.txt
-└── README.md
-```
-
-### Getting Started
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/your-username/facial-stress-detection.git
-cd facial-stress-detection
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Launch the notebook
-jupyter notebook notebooks/facial_expression_pipeline.ipynb
-```
-
-**`requirements.txt`**
-```
-pandas>=2.0
-numpy>=1.24
-scikit-learn>=1.3
-matplotlib>=3.7
-seaborn>=0.12
-plotly>=5.14
-jupyter>=1.0
-```
-
----
-
-## 🔭 Future Work
-
-- **Real-Time Inference:** Integrate with a live camera feed and deploy as an edge pipeline for real-time reading session monitoring
-- **Temporal Modeling:** Exploit the sequential frame structure using LSTMs or Transformers to capture stress dynamics over time, rather than treating frames independently
-- **Expanded Feature Set:** Incorporate blink rate, micro-expression intensity, and pupil dilation for richer behavioral signal
-- **Multi-Language Extension:** Apply the pipeline to reading sessions in other scripts (Hebrew, Urdu, English) to study cross-linguistic stress patterns
-- **Explainability Layer:** Integrate SHAP values for per-prediction explanations, supporting transparent AI deployment in educational and clinical settings
-
----
-
-<div align="center">
-
-**Built with 🧠 and ☕ as a Graduation Project in AI & Machine Learning**
-
-*For academic inquiries, collaboration, or questions about this pipeline, feel free to open an issue or reach out.*
 
 </div>

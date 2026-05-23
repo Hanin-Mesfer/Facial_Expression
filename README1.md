@@ -33,7 +33,7 @@
 
 ### The Problem
 
-Stress is a pervasive psychological phenomenon that significantly impacts cognitive performance, reading comprehension, and mental health. Yet detecting stress non-invasively and in real time — without physiological sensors or self-reporting — remains an open challenge in human-computer interaction and cognitive science.
+The core problem addressed in this work lies in the difficulty of accurately and objectively identifying reading-related stress and cognitive load in students during real-time reading activities, particularly in Arabic language contexts. Traditional assessment methods rely on manual observation or standardized tests, which are limited in their ability to capture subtle, continuous, and non-verbal behavioral signals such as micro-expressions, gaze patterns. These approaches are often subjective, time-consuming, and lack the granularity needed to reflect moment-to-moment variations in cognitive and emotional states. As a result, there is a need for an automated, scalable, and data-driven system capable of extracting meaningful behavioral indicators from facial and visual data to better understand and predict reading difficulties.
 
 ### Why Facial Expressions?
 

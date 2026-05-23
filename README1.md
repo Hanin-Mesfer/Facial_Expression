@@ -59,8 +59,6 @@ Rather than relying on pre-defined clinical thresholds, this project leverages m
 - 🏷️ Generate **data-driven stress labels** from cluster assignments to enable supervised learning
 - 🤖 Train a high-performance **Gradient Boosting classifier** achieving ~96% cross-validated accuracy
 - ✅ Validate model robustness using **5-fold Stratified Cross-Validation** and an independent held-out test set
-- 📈 Visualize cluster structures, feature importances, and model decisions
-- 🚀 Deliver a complete, reproducible ML pipeline from raw sensor data to prediction
 
 ---
 

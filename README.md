@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧠 Facial Expression-Based Stress Detection
+# 🧠 Facial Expression
 ### A Full End-to-End Machine Learning Pipeline
 
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
@@ -26,9 +26,7 @@
 - [Supervised Learning](#-supervised-learning)
 - [Model Evaluation](#-model-evaluation)
 - [Technologies Used](#-technologies-used)
-- [Project Structure](#-project-structure)
 - [Scientific Validity Notes](#-scientific-validity-notes)
-- [Future Work](#-future-work)
 
 ---
 
@@ -95,15 +93,6 @@ Facial expression data was extracted frame-by-frame from video recordings of par
 | `Eye_Yaw` | Float (degrees) | Estimated horizontal gaze deviation |
 | `Eye_Pitch` | Float (degrees) | Estimated vertical gaze deviation |
 
-### Emotion Distribution
-
-```
-Training Set:                   Testing Set:
-  CALM        → 681 (53.9%)       CALM        → 1,070 (62.7%)
-  SURPRISED   → 543 (43.0%)       SURPRISED   →   569 (33.4%)
-  SAD         →  26  (2.1%)       CONFUSED    →    58  (3.4%)
-  CONFUSED    →  13  (1.0%)       DISGUSTED   →     5  (0.3%)
-                                  SAD         →     4  (0.2%)
 ```
 
 > ⚠️ **Class Imbalance:** The training set exhibits a 52.4× imbalance (CALM vs. CONFUSED); the test set reaches 267.5×. This is carefully addressed during supervised learning via balanced sample weighting.
@@ -134,7 +123,7 @@ Training Set:                   Testing Set:
                              ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │             EXPLORATORY DATA ANALYSIS (EDA)                     │
-│   Correlation heatmaps · Distribution plots · Outlier analysis  │
+│   Correlation heatmaps · Distribution plots  │
 └────────────────────────────┬────────────────────────────────────┘
                              │
                              ▼
@@ -194,17 +183,6 @@ Statistical summaries (mean, std, min/max, IQR) were generated for all numeric f
 
 Emotion class distributions were visualized using bar charts for both train and test splits. The severe imbalance (52–267× in train vs. test) was diagnosed as a critical preprocessing concern, addressed downstream by computing balanced sample weights during classification.
 
-### Libraries Used
-
-| Library | Role |
-|---------|------|
-| `pandas` | Data loading, manipulation, groupby analysis |
-| `numpy` | Numerical computation |
-| `matplotlib` | Static visualization |
-| `seaborn` | Statistical heatmaps, distribution plots |
-| `plotly` | Interactive visualizations |
-| `sklearn.decomposition.PCA` | Dimensionality reduction for cluster visualization |
-
 ---
 
 ## 🔵 Clustering Phase — Gaussian Mixture Model
@@ -258,39 +236,6 @@ Human emotional states are inherently continuous and overlapping. A person trans
 - Cluster assignments produced more balanced and interpretable pseudo-label distributions
 
 ---
-
-### GMM: Technical Deep Dive
-
-A Gaussian Mixture Model represents the data as a weighted sum of *K* Gaussian components:
-
-```
-p(x) = Σ_{k=1}^{K}  π_k · N(x | μ_k, Σ_k)
-```
-
-Where:
-- `π_k` — mixing weight for component *k* (sums to 1)
-- `μ_k` — mean vector of the *k*-th Gaussian
-- `Σ_k` — covariance matrix of the *k*-th Gaussian
-- `N(x | μ_k, Σ_k)` — multivariate Gaussian probability density
-
-**Parameter estimation — Expectation-Maximization (EM):**
-
-GMM parameters are fit iteratively using the EM algorithm:
-
-1. **E-step (Expectation):** Compute the posterior probability (responsibility) that each component *k* generated each data point *x_i*
-2. **M-step (Maximization):** Update `π_k`, `μ_k`, and `Σ_k` to maximize the expected log-likelihood given the responsibilities
-3. **Repeat** until log-likelihood convergence
-
-**Optimal number of clusters — BIC criterion:**
-
-The number of components *K* was selected by minimizing the Bayesian Information Criterion:
-
-```
-BIC = -2 · log-likelihood + K · log(N)
-```
-
-BIC penalizes model complexity (number of parameters) relative to fit quality, preventing overfitting to spurious cluster structures.
-
 **Pseudo-label generation:**
 
 Each training and test sample was assigned to the cluster with the **highest posterior probability** (argmax of the responsibility vector), yielding 6 distinct stress-level pseudo-labels:
@@ -313,14 +258,6 @@ PCA-based 2D projection was used to visualize cluster separability, confirming t
 ### Algorithm: Gradient Boosting Classifier
 
 Following pseudo-label generation, a **Gradient Boosting Classifier** was trained on the training set using the GMM-derived stress labels as targets.
-
-Gradient Boosting is an ensemble method that builds an additive model in a forward stage-wise fashion:
-
-```
-F_m(x) = F_{m-1}(x) + ν · h_m(x)
-```
-
-Where `h_m` is a weak learner (shallow decision tree) fit to the pseudo-residuals of the previous model, and `ν` is the learning rate.
 
 ### Hyperparameters
 
@@ -421,59 +358,7 @@ Stratified splitting ensures each fold preserves the original class distribution
 | **Seaborn** | Latest | Correlation heatmaps, distribution plots |
 | **Plotly** | Latest | Interactive visualizations |
 | **Amazon Rekognition** | AWS API | Facial emotion and pose extraction |
-| **Jupyter Notebook** | Latest | Interactive development and experiment tracking |
 
----
-
-## 📁 Project Structure
-
-```
-facial-stress-detection/
-│
-├── 📂 data/
-│   ├── TrainData.csv              # Training set (1,263 samples, 8 features)
-│   └── TestData.csv               # Test set (1,706 samples, 8 features)
-│
-├── 📂 notebooks/
-│   └── facial_expression_pipeline.ipynb   # Main ML pipeline notebook
-│
-├── 📂 outputs/
-│   ├── figures/                   # Saved EDA and evaluation plots
-│   └── models/                    # Serialized GMM and Gradient Boosting models
-│
-├── 📂 src/
-│   ├── feature_engineering.py     # Feature engineering utilities
-│   ├── clustering.py              # GMM training and evaluation
-│   └── supervised.py              # Gradient Boosting training pipeline
-│
-├── requirements.txt
-└── README.md
-```
-
-### Getting Started
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/your-username/facial-stress-detection.git
-cd facial-stress-detection
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Launch the notebook
-jupyter notebook notebooks/facial_expression_pipeline.ipynb
-```
-
-**`requirements.txt`**
-```
-pandas>=2.0
-numpy>=1.24
-scikit-learn>=1.3
-matplotlib>=3.7
-seaborn>=0.12
-plotly>=5.14
-jupyter>=1.0
-```
 
 ---
 
@@ -485,27 +370,12 @@ This project employs a **hybrid unsupervised-then-supervised** strategy. Underst
 |--------|---------------|
 | **Pseudo-labels ≠ Ground Truth** | Stress levels are data-driven approximations from GMM clusters, not clinically validated psychological states |
 | **Pattern Learning** | High classification accuracy reflects how well the model has learned the clustering structure — not that it measures genuine psychological stress |
-| **Distribution Shift** | Train-test accuracy gap (~20%) arises partly from pseudo-label distribution differences across the two recording sessions |
-| **Minority Class Challenge** | `Medium Stress 1` and `Medium Stress 4` have too few samples in both train and pseudo-label space to generalize reliably |
-| **External Validity** | Results are specific to this Arabic reading context; generalization to other populations or tasks requires revalidation |
-
----
-
-## 🔭 Future Work
-
-- **Clinical Validation:** Collect ground-truth stress labels (via galvanic skin response, cortisol measurement, or validated self-report scales) and retrain on true labels
-- **Temporal Modeling:** Exploit the sequential frame structure using LSTMs or Transformers to capture stress dynamics over time
-- **Real-Time Pipeline:** Integrate with live camera feed and deploy as an edge inference system
-- **Expanded Feature Set:** Incorporate blink rate, micro-expression intensity, and pupil dilation where available
-- **Multi-Language Extension:** Apply the pipeline to reading sessions in other scripts (Hebrew, Urdu, English) to study cross-linguistic stress patterns
-- **Explainability:** Integrate SHAP values for per-prediction explanations to support interpretable AI deployment in educational settings
 
 ---
 
 <div align="center">
 
-**Built with 🧠 and ☕ as a Graduation Project in AI & Machine Learning**
+**Graduation Project**
 
-*For academic inquiries, collaboration, or questions about this pipeline, feel free to open an issue or reach out.*
 
 </div>

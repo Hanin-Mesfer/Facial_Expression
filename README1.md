@@ -37,17 +37,17 @@ The core problem addressed in this work lies in the difficulty of accurately and
 
 ### Why Facial Expressions?
 
-The human face is one of the most information-rich channels of non-verbal communication. Research in affective computing has demonstrated that subtle changes in facial pose, gaze direction, and expressed emotion serve as reliable proxies for internal cognitive states, including stress, confusion, and cognitive load.
+The human face is a rich and informative channel of non-verbal communication. Research in affective computing has shown that variations in facial expressions, gaze direction, and head pose can serve as reliable indicators of underlying cognitive and emotional states such as stress, confusion, and cognitive load.
 
-Amazon Rekognition's deep learning-powered facial analysis API enables extraction of high-fidelity emotion confidence scores and spatial pose metrics from video frames — making it possible to build a robust, data-driven stress detection pipeline without specialized medical hardware.
+In this work, facial analysis is leveraged to extract structured behavioral signals from video data, enabling the construction of a data-driven representation of reading-related stress without requiring intrusive or specialized physiological sensors.
 
 ### Why Arabic Reading Sessions?
 
-Arabic is a morphologically rich and visually complex language. Reading cognitive load differs significantly across language scripts, and Arabic text processing generates distinctive emotional and postural signatures that differentiate stress states with high clarity. This project captures these dynamics frame-by-frame, creating a rich temporal dataset that reflects genuine cognitive engagement under varying levels of reading difficulty.
+Arabic presents unique linguistic and cognitive characteristics due to its rich morphology, contextual letter shaping, and the coexistence of Modern Standard Arabic with spoken dialects. These properties contribute to variations in reading difficulty and cognitive processing load compared to other languages.
 
 ### The Role of AI and Machine Learning
 
-Rather than relying on pre-defined clinical thresholds, this project leverages machine learning to **discover** stress patterns directly from data. By combining unsupervised clustering (to generate data-driven stress labels) with supervised classification (to learn and generalize those patterns), the pipeline uncovers the latent emotional structure of stress from the bottom up — producing a fully automated, adaptable detection system.
+Combines unsupervised learning (to discover inherent data structure and generate pseudo-labels) with supervised learning (to generalize these patterns for prediction). This hybrid strategy enables the development of an adaptive and fully data-driven system for stress detection, capable of modeling complex and non-linear relationships in facial expression data.
 
 ---
 

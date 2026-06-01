@@ -1,15 +1,6 @@
 <div align="center">
 
-# 🧠 Facial Expression-Based Stress Detection
-### A Full End-to-End Machine Learning Pipeline
 
-[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3+-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
-[![Amazon Rekognition](https://img.shields.io/badge/Amazon-Rekognition-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/rekognition/)
-[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-
-*Predicting cognitive stress levels from facial expression dynamics during Arabic text reading sessions — using unsupervised clustering and supervised Gradient Boosting.*
 
 </div>
 

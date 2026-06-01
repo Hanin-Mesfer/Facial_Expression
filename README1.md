@@ -208,28 +208,7 @@ The low standard deviation (±0.53%) across folds confirms **exceptional model s
 |--------|-------|
 | **Cross-Validation Accuracy** | **95.88% ± 0.53%** |
 | **Test Set Accuracy** | **75.73%** |
-| Weighted Precision | 0.77 |
-| Weighted Recall | 0.76 |
-| Weighted F1-Score | 0.75 |
 
-### Highlights: Strong Per-Class Performance
-
-The model delivers particularly strong results on the most critical stress categories — the ones with sufficient representation and highest real-world relevance:
-
-| Stress Level | Precision | Recall | F1-Score | Support |
-|--------------|:---------:|:------:|:--------:|:-------:|
-| **High Stress** | **0.91** | 0.74 | **0.81** | 729 |
-| **Low Stress** | 0.66 | **0.97** | **0.79** | 254 |
-| Medium Stress 2 | **0.78** | **0.83** | **0.80** | 369 |
-| Medium Stress 3 | 0.64 | 0.70 | 0.67 | 287 |
-| Medium Stress 1 | 0.05 | 0.04 | 0.04 | 56 |
-| Medium Stress 4 | 0.00 | 0.00 | 0.00 | 11 |
-
-**Key strengths:**
-
-- **High Stress precision of 0.91** — when the model flags a participant as highly stressed, it is correct 91% of the time. This near-elimination of false alarms is critical for any real-world deployment
-- **Low Stress recall of 0.97** — virtually every truly low-stress participant is correctly identified, ensuring the system doesn't over-pathologize calm readers
-- **Three of the four well-represented classes achieve F1 ≥ 0.79**, demonstrating reliable multi-class discrimination across the stress spectrum
 
 ### Gradient Boosting Feature Importances
 

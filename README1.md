@@ -6,21 +6,8 @@
 
 ---
 
-## 📖 Table of Contents
 
-- [Introduction](#-introduction)
-- [Objectives](#-objectives)
-- [Dataset Description](#-dataset-description)
-- [ML Pipeline Overview](#-ml-pipeline-overview)
-- [Exploratory Data Analysis](#-exploratory-data-analysis)
-- [Clustering Phase — GMM](#-clustering-phase--gaussian-mixture-model)
-- [Supervised Learning](#-supervised-learning)
-- [Model Evaluation](#-model-evaluation)
-- [Technologies Used](#-technologies-used)
-
----
-
-## 🌐 Introduction
+## Introduction
 
 ### The Problem
 

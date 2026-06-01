@@ -3,8 +3,6 @@
 
 </div>
 
----
-
 
 ## Introduction
 
@@ -75,8 +73,6 @@ Three domain-informed features were derived to amplify signal strength:
 | `Eye_Magnitude` | √(Eye_Yaw² + Eye_Pitch²) | Aggregate gaze deviation intensity |
 | `Pose_x_Eye` | Pose_Magnitude × Eye_Magnitude | Captures coupled head-gaze behavior under stress |
 
----
-
 
 ---
 
@@ -140,11 +136,8 @@ GMM discovered **6 distinct stress-level groups**, labeled by their behavioral p
 | Cluster Label | Training Samples | Interpretation |
 |---------------|-----------------|----------------|
 | Low Stress | 376 | Stable gaze, composed posture, high emotion confidence |
-| Medium Stress 2 | 344 | Moderate gaze deviation, slight postural shift |
-| Medium Stress 3 | 334 | Elevated head movement, reduced emotion clarity |
+| Medium Stress  | 344 | Moderate gaze deviation, slight postural shift |
 | High Stress | 152 | Maximum pose-gaze coupling, high `Pose_x_Eye` scores |
-| Medium Stress 1 | 34 | Transitional region between low and medium states |
-| Medium Stress 4 | 23 | Edge-case cluster with distinctive gaze patterns |
 
 ---
 
@@ -254,23 +247,6 @@ The model's internal feature importance rankings align closely with the MI-based
 The consistency between MI scores and learned feature importances is a strong indicator of **a well-calibrated, trustworthy model** — both pre-training feature analysis and post-training model introspection tell the same story.
 
 ---
-
-## 🛠️ Technologies Used
-
-| Technology | Role |
-|------------|------|
-| ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white) **Python 3.10+** | Core programming language |
-| **Pandas** | Data loading, manipulation, aggregation |
-| **NumPy** | Numerical computation, array operations |
-| **Scikit-learn** | GMM, Gradient Boosting, preprocessing, MI selection, evaluation |
-| **Matplotlib** | Static charts, confusion matrix |
-| **Seaborn** | Correlation heatmaps, distribution plots |
-| **Plotly** | Interactive visualizations |
-| **Amazon Rekognition** | Deep learning facial emotion & pose extraction |
-| **Jupyter Notebook** | Interactive development and experiment tracking |
-
----
-
 
 
 </div>
